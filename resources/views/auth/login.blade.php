@@ -76,6 +76,10 @@
                         @endif
                     </div>
                 </form>
+                <a href="/redirect"
+                        class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-red-500 hover:bg-red-700 sm:py-4">
+                            {{ __('Google') }}
+            </a>
 
             </section>
         </div>
