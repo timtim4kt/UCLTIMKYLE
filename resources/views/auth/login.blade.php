@@ -65,6 +65,10 @@
                         class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
                             {{ __('Login') }}
                         </button>
+                        <a href="/redirect"
+                class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-center text-gray-100 bg-blue-500 hover:bg-blue-700 sm:py-4">
+                            {{ __('Google') }}
+            </a>
 
                         @if (Route::has('register'))
                         <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8">
@@ -72,14 +76,14 @@
                             <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('register') }}">
                                 {{ __('Register') }}
                             </a>
+                    
                         </p>
                         @endif
+                        
+                        
                     </div>
                 </form>
-                <a href="/redirect"
-                        class="w-full select-none font-bold whitespace-no-wrap p-3 rounded-lg text-base leading-normal no-underline text-gray-100 bg-red-500 hover:bg-red-700 sm:py-4">
-                            {{ __('Google') }}
-            </a>
+                
 
             </section>
         </div>
