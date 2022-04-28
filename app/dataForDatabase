@@ -1,0 +1,38 @@
+
+CREATE TABLE `players` (
+  `player_ID` int(11) NOT NULL,
+  `player_name` varchar(255) NOT NULL,
+  `player_team` varchar(255) NOT NULL,
+  `player_average_rating` decimal(10,2) NOT NULL,
+  `player_goals` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `players` (`player_ID`, `player_name`, `player_team`, `player_average_rating` , `player_goals`) VALUES
+(1,'Phil Foden', 'Man City', '9.00', 5),
+(2,'Karim Benzema', 'Real Madrid', '8.50', 14),
+(3,'Mo Salah', 'Liverpool', '8.00', 8),
+(4,'Diogo Jota', 'Liverpool', '8.00', 8),
+(5,'Vinicius Jr', 'Real Madrid', '8.00', 6),
+(6,'Sadio Mane', 'Liverpool', '8.00', 8),
+(8,'Bernardo Silva', 'Man City', '5.00', 9),
+(9,'Roberto Firminho', 'Liverpool', '8.00', 11),
+(10,'Gabriel Jesus', 'Man City', '5.00', 13);
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `records`
+--
+ALTER TABLE `players`
+  ADD PRIMARY KEY (`player_ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `records`
+--
+ALTER TABLE `players`
+  MODIFY `player_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;

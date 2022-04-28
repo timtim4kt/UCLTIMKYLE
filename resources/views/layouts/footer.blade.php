@@ -12,6 +12,11 @@
                     </a>
                 </li>
                 <li class="pb-1">
+                    <a href="/players">
+                        Players
+                    </a>
+                </li>
+                <li class="pb-1">
                     <a href="/blog">
                         Blog
                     </a>
