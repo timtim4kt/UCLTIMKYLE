@@ -1,22 +1,49 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="w-4/5 m-auto text-left">
-    <div class="py-15">
-        <h1 class="text-6xl">
-            {{ $post->title }}
-        </h1>
+
+
+<div class="text-center pt-16 md:pt-32">
+    <p class="text-sm md:text-base text-green-500 font-bold">Created on {{ date('jS M Y', strtotime($post->updated_at)) }}<span class="text-gray-900">/</span>BY {{ $post->user->name }}</p>
+    <h1 class="font-bold break-normal text-3xl md:text-5xl">  {{ $post->title }}</h1>
+</div>
+
+<!--image-->
+<div class="container w-full max-w-6xl mx-auto bg-white bg-cover mt-8 rounded" > <img style="width:1000px, height:630px"src="{{ asset('images/' . $post->image_path) }}" alt=""></div>
+
+<!--Container-->
+<div class="container max-w-5xl mx-auto -mt-32">
+    
+    <div class="mx-0 sm:mx-6">
+        
+        <div class="bg-white w-full p-8 md:p-24 text-xl md:text-2xl text-gray-800 leading-normal" style="font-family:Georgia,serif;">
+            
+            <!--Post Content-->
+            
+
+            <!--Lead Para-->
+          
+            <p class="py-6" style="margin-top: 5%"> {{ $post->description }}</p>				
+        
+           
+
+                                            
+            <!--/ Post Content-->
+                    
+        </div>
+        
+        
+      
+
+
+</div>
+
+
+
+
+
+
+
     </div>
-</div>
-
-<div class="w-4/5 m-auto pt-20">
-    <span class="text-gray-500">
-        By <span class="font-bold italic text-gray-800">{{ $post->user->name }}</span>, Created on {{ date('jS M Y', strtotime($post->updated_at)) }}
-    </span>
-
-    <p class="text-xl text-gray-700 pt-8 pb-10 leading-8 font-light">
-        {{ $post->description }}
-    </p>
-</div>
 
 @endsection 

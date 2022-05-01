@@ -9,7 +9,7 @@ require_once('..\app\includes\playerdata.php');
 <div class="container">
 
 
-<section>
+<section style="margin-bottom: 10%">
 <!-- display a table of records -->
 <h1 class="tsc">TOP SCORERS UCL 2022</h1>   
 <table>
@@ -39,4 +39,3 @@ foreach ($players as $player) : ?>
 </table>
 </section>
 @endsection
-

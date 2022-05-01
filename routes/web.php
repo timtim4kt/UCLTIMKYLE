@@ -15,7 +15,11 @@ use App\Http\Controllers\PostsController;
 |
 */
 
+
+
 Route::get('/', [PagesController::class, 'index']);
+
+Route::post('/search_post',[PostsController::class,'search']);
 
 Route::resource('/blog', PostsController::class);
 

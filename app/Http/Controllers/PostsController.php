@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use DB;
+
+
+
+
 
 class PostsController extends Controller
 {
@@ -23,7 +28,6 @@ class PostsController extends Controller
         return view('blog.index')
             ->with('posts', Post::orderBy('updated_at', 'DESC')->get());
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -33,7 +37,6 @@ class PostsController extends Controller
     {
         return view('blog.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -47,11 +50,8 @@ class PostsController extends Controller
             'description' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg|max:5048'
         ]);
-
         $newImageName = uniqid() . '-' . $request->title . '.' . $request->image->extension();
-
         $request->image->move(public_path('images'), $newImageName);
-
         Post::create([
             'title' => $request->input('title'),
             'description' => $request->input('description'),
@@ -59,11 +59,9 @@ class PostsController extends Controller
             'image_path' => $newImageName,
             'user_id' => auth()->user()->id
         ]);
-
         return redirect('/blog')
             ->with('message', 'Your post has been added!');
     }
-
     /**
      * Display the specified resource.
      *
@@ -75,7 +73,6 @@ class PostsController extends Controller
         return view('blog.show')
             ->with('post', Post::where('slug', $slug)->first());
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -87,7 +84,6 @@ class PostsController extends Controller
         return view('blog.edit')
             ->with('post', Post::where('slug', $slug)->first());
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -101,7 +97,6 @@ class PostsController extends Controller
             'title' => 'required',
             'description' => 'required',
         ]);
-
         Post::where('slug', $slug)
             ->update([
                 'title' => $request->input('title'),
@@ -109,11 +104,9 @@ class PostsController extends Controller
                 'slug' => SlugService::createSlug(Post::class, 'slug', $request->title),
                 'user_id' => auth()->user()->id
             ]);
-
         return redirect('/blog')
             ->with('message', 'Your post has been updated!');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -124,9 +117,14 @@ class PostsController extends Controller
     {
         $post = Post::where('slug', $slug);
         $post->delete();
-
         return redirect('/blog')
             ->with('message', 'Your post has been deleted!');
+    }
+    public function search(Request $request){
+        $posts = DB::table('posts')
+    ->where('title', 'like', '%' .$request->search . '%')->get();
+        $posts = Post::where('title', 'like', '%' .$request->search . '%')->get();
+    return view('blog.search_post',compact('posts'));
     }
 }
 
